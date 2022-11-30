@@ -26,3 +26,19 @@ export const ADD_USER = gql`
         }
     }
 `;
+
+
+// mutation for adding a new friend 
+export const ADD_FRIEND = gql`
+    mutation addFriend($id: ID!) {
+        addFriend(friendId: $id) {
+            _id
+            username
+            friendCount
+            friends {
+                _id
+                username
+            }
+        }
+    }
+`;
