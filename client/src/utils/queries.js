@@ -59,3 +59,48 @@ export const QUERY_USER = gql`
         }
     }
 `;
+
+// this query retrives all thge data related to the logged-in user
+// then retrieve their user information, thoughts, reactions to those thoughts, and friend list.
+export const QUERY_ME = gql`
+    {
+        me {
+            _id
+            username
+            email
+            friendCount
+            thoughts {
+                _id
+                thoughtText
+                createdAt
+                reactionCount
+                reactions {
+                    _id
+                    createdAt
+                    reactionBody
+                    username
+                }
+            }
+            friends {
+                _id
+                username
+            }
+        }
+    }
+`;
+
+// we are requesting less data for the users homepage
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
